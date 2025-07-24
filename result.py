@@ -1,6 +1,3 @@
-
-
-
 def sort(width, height, length, mass):
     """
     Sorts objects based on their dimensions and mass.
@@ -42,6 +39,3 @@ def sort(width, height, length, mass):
         return "SPECIAL"
 
     return "STANDARD"
-
-
-
