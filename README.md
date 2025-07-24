@@ -9,7 +9,7 @@ pip install -r requirements.txt
 
 ## Run the test
 ```shell
-pytest result.py
+pytest --cov
 ```
 
 You should see a message saying ***14 passed***:
