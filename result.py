@@ -15,10 +15,10 @@ def sort(width, height, length, mass):
         (str): A string indicating the sorted category.
     """
     for item in (width, height, length, mass):
-        if not isinstance(item, (int, float)):
-            return "REJECTED"
+        if not isinstance(item, (int, float, str)):
+            return "INVALID"
         if item <= 0:
-            return "REJECTED"
+            return "INVALID"
 
     MAX_VOLUME = 1000000
     MAX_SIZE = 150
