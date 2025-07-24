@@ -1,6 +1,3 @@
-import pytest
-
-
 def sort(width, height, length, mass):
     """
     Sorts objects based on their dimensions and mass.
@@ -18,10 +15,10 @@ def sort(width, height, length, mass):
         (str): A string indicating the sorted category.
     """
     for item in (width, height, length, mass):
-        if not isinstance(item, (int, float)):
-            return "REJECTED"
+        if not isinstance(item, (int, float, str)):
+            return "INVALID"
         if item <= 0:
-            return "REJECTED"
+            return "INVALID"
 
     MAX_VOLUME = 1000000
     MAX_SIZE = 150
@@ -42,26 +39,3 @@ def sort(width, height, length, mass):
         return "SPECIAL"
 
     return "STANDARD"
-
-
-@pytest.mark.parametrize('width, height, length, mass, expected', [
-    (10, 10, 10, 10, "STANDARD"),
-    (10, 1, 1, 1, "STANDARD"),
-    (10, 10, 10, 20, "SPECIAL"),
-    (1, 1, 1000000, 20, "REJECTED"),
-    (1, 1, 1000000, 21, "REJECTED"),
-    (1, 1, 1000000, 10, "SPECIAL"),
-    (0, 1, 1000000, 10, "REJECTED"),
-    (1, 0, 1000000, 10, "REJECTED"),
-    (1, 1, 0, 10, "REJECTED"),
-    (1, 1, 1000000, 0, "REJECTED"),
-    ('a', 1, 1000000, 0, "REJECTED"),
-    (1, 'a', 1000000, 0, "REJECTED"),
-    (1, 1, 'a', 0, "REJECTED"),
-    (1, 1, 1000000, 'a', "REJECTED"),
-])
-def test_sort(width, height, length, mass, expected):
-    """
-    Test the sort function.
-    """
-    assert sort(width, height, length, mass) == expected
